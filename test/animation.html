@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Animation</title>
+    <script src="../doc/asset/js/jquery.js"></script>
+    <script type="text/javascript" src="../doc/asset/js/esl/esl.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+    require.config({
+        packages: [
+            {
+                name: 'zrender',
+                location: '../src',
+                main: 'zrender'
+            }
+        ]
+    });
+    require(
+        [
+            "zrender",
+            "zrender/animation/animation",
+            'zrender/shape/Circle'
+        ], 
+        function(zrender, Animation, CircleShape){
+            // 初始化zrender
+            var zr = zrender.init( document.getElementById("Main") );
+            var circles = new CircleShape({
+                hoverable : false,
+                position : [100, 100],
+                scale : [1, 1],
+                style : {
+                    x : 50,
+                    y : 50,
+                    r : 20,
+                    brushType : 'fill',
+                    color : 'rgba(33, 222, 10, 0.2)',
+                    lineWidth : 5,
+                    textPosition :'inside',
+                },
+                clickable: true,
+                onclick: function() {
+                    // zr.delShape(circle);
+                    // zr.addGroup(circle);
+                }
+            });
+            var circle = new CircleShape({
+                id : "abc",
+                hoverable : false,
+                position : [100, 100],
+                scale : [1, 1],
+                style : {
+                    x : 0,
+                    y : 0,
+                    r : 50,
+                    brushType : 'fill',
+                    color : 'rgba(33, 222, 10, 1)',
+                    lineWidth : 5,
+                    textPosition :'inside'
+                },
+                clickable: true,
+                onclick : function() {
+
+                },
+                addChild : function(){
+
+                }
+            });
+            zr.addShape(circle);
+        })
+        //动画（画布，元素），暂不知道怎么改变style属性
+        var animates = function($obj,$id){
+            $obj.animate($id, "", false)
+                        .when(1000, {
+                            scale: [2, 1],
+                            position : [200, 200]
+                        }).start();
+        }
+        //获取图片
+        var getImg = function($id){
+            var xx = $id.toDataURL("png","");
+            $(".place").append('这就是生成的图片<img src="'+xx+'">')
+        }
+        //清除画布(画布，元素，引入方法),========>外部引用
+        var clearCanvas = function($obj,$id,$fn){
+            $obj.on("click",function(){
+                $obj.addShape(new $fn({
+                                hoverable : false,
+                                position : [100, 100],
+                                scale : [1, 1],
+                                style : {
+                                    x : Math.round(Math.random() * 400),
+                                    y : Math.round(Math.random() * 300),
+                                    r : Math.round(Math.random() * 50),
+                                    brushType : 'fill',
+                                    color : 'rgba(33, 222, 10, 0.2)',
+                                    lineWidth : 5,
+                                    textPosition :'inside',
+                                },
+                                clickable: true,
+                            }));
+            })
+            $(".place").text("clear all");
+            $(".place").bind("click",function(){$obj.clear()})
+        }
+    </script>
+    <div id="Main" style="float:left;width:600px;height:400px;background:#e6e6e6;"></div>
+    <div class="place" style="float:left;width:100px;height:100px;background:#999999;" ></div>
+</body>
+</html>

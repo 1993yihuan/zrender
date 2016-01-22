@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>zrender Beta</title>
+	<link rel="stylesheet" type="text/css" href="../../style/index-public.css">
+    <script src="../doc/asset/js/jquery.js"></script>
+    <script type="text/javascript" src="../doc/asset/js/esl/esl.js"></script>
+   	<script type="text/javascript" src="zrender-js.js"></script>
+   	<style>
+		.canvas-div{background:#e6e6e6; border-radius: 6px;}
+		.input{ width: 50px; line-height: 30px; border-radius: 4px; border: 1px #ee6356 solid; text-align: center; }
+		.s-btn-sma,a{ width: auto; height: auto; padding: 7px 24px; font-size: 12px; background: #ee6356; color: #fff; border: 1px solid #ee6356; border-radius: 3px; cursor: pointer;transition: 0.3s; }
+		.s-btn-sma:hover,a:hover{ background: #fff; color: #ee6356; }
+		h2,.code{ font-style: normal; }
+		#canvas_max{ position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 2; background: #e6e6e6; }
+		h1 span{ margin-left: 20px; font-size: 12px; color: #999; }
+   	</style>
+</head>
+<body class="zrender-body">
+	<div id="canvas_max"></div>
+
+	<h1>zrender基本应用<span>by hyh 408240762</span></h1>
+	<hr/>
+	
+	<h2>画个可以拖拽的圆</h2>
+	<p class="code">
+		CircleShape()定义圆的属性；addShape()加图形增加至画布<br/>
+	</p>
+	<div id="canvas_1" class="canvas-div" style="width:200px;height:200px;"></div>
+	<hr/>
+
+	<h2>当然、也可以动起来</h2>
+	<p class="code">
+		animate($id, $canvas, true)第三个参数为true表示循环<br/>
+	</p>
+	<div id="canvas_2" class="canvas-div" style="width:200px;height:200px;"></div>
+	<hr/>
+
+	<h2>还可以有其他图形</h2>
+	<p class="code">
+		根据zrender提供的绘画插件，引用相应文件，获得各种图形<br/>
+	</p>
+	<div id="canvas_3" class="canvas-div" style="width:200px;height:200px;"></div>
+	<hr/>
+	<i class="iconfont ">
+	<h2>来画根线</h2>
+	<p class="code">
+		引入line相关js，利用animate();实现动态绘画
+		<input class="input" type="text" placeholder="起点X"></input>
+		<input class="input" type="text" placeholder="起点Y"></input>
+		<input class="input" type="text" placeholder="终点X"></input>
+		<input class="input" type="text" placeholder="终点Y"></input>
+		<input type="button" class="s-btn-sma s-btn-w" id="lineBtn" value="绘画">
+		<br/>
+	</p>
+	<br/>
+	<div id="canvas_4" class="canvas-div" style="width:1000px;height:200px;"></div>
+	<hr/>
+
+	<h2>多边形绘画</h2>
+	<p class="code">
+		Polygon文件带入相关参数<br/>
+	</p>
+	<div id="canvas_5" class="canvas-div" style="width:200px;height:200px;"></div>
+	<hr/>
+
+	<h2>扇形绘画</h2>
+	<p class="code">
+		根据zrender提供的绘画插件，引用相应文件，获得各种图形<br/>
+	</p>
+	<div id="canvas_6" class="canvas-div" style="width:200px;height:200px;"></div>
+	<hr/>
+
+	<h2>动画函数</h2>
+	<p class="code">
+		随机生成不同颜色的圆，再加动画函数及相关效果<br/>
+	</p>
+	<div id="canvas_7" class="canvas-div" style="width:1140px;height:300px;"></div>
+	<input type="button" class="s-btn-sma s-btn-w" id="canvas_7_refresh" value="refresh" style="margin-top: 10px;">
+	<hr/>
+
+	<h2>绘制曲线</h2>
+	<p class="code">
+		根据点位绘制曲线<br/>
+	</p>
+	<div id="canvas_8" class="canvas-div" style="width:1140px;height:300px;"></div>
+	<hr/>
+
+	<h2>翻滚变色的五角星</h2>
+	<p class="code">
+		setTimeout循环变色动画,toDataURL()提供base64图片生成<br/>
+	</p>
+	<div class="clearfix">
+		<div id="canvas_9" class="canvas-div" style="width:200px;height:200px; float: left;"></div>
+	</div>
+	<input type="button" class="s-btn-sma s-btn-w" id="getImg" value="生成图片" style="margin-top: 10px;">
+	<hr/>
+
+	<h2>canvas时钟</h2>
+	<p class="code">
+		根据系统时间计算line角度，modShape三根指针<br/>
+	</p>
+	<div id="canvas_10" class="canvas-div" style="width:200px;height:200px;"></div>
+	<hr/>
+
+	<h2>追踪鼠标</h2>
+	<p class="code">
+		<br/>
+	</p>
+	<div id="canvas_11" class="canvas-div" style="width:1100px;height:500px;"></div>
+	<hr/>
+
+</body>
+</html>
