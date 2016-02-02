@@ -15,8 +15,8 @@ require.config({
 //引入包
 require(
     [
-        "zrender",
-        "zrender/animation/Animation",
+        'zrender',
+        'zrender/animation/Animation',
         'zrender/shape/Circle',
         'zrender/shape/Heart',
         'zrender/shape/Line',
@@ -25,13 +25,13 @@ require(
         'zrender/shape/Polyline',
         'zrender/shape/Star',
         'zrender/shape/Text'
-    ], 
+    ],
     function(zrender, Animation, CircleShape, HeartShape, LineShape, PolygonShape, SectorShape, PolylineShape, StarShape, TextShape){
     	//----------画个圆----------
     	// 初始化zrender
-        var circleCanvas_1 = zrender.init( document.getElementById("canvas_1") );
+        var circleCanvas_1 = zrender.init( document.getElementById('canvas_1') );
         var circle_1 = new CircleShape({
-            id : "circleBase",
+            id : 'circleBase',
             hoverable : false,
             position : [100, 100],
             scale : [1, 1],
@@ -52,7 +52,7 @@ require(
             }
         });
         circleCanvas_1.addShape(circle_1);
-        circleCanvas_1.animate(circle_1, "style", false)
+        circleCanvas_1.animate(circle_1, 'style', false)
                             .when(7000, {
                                 r : 50
                             }).start();
@@ -78,8 +78,8 @@ require(
             addChild : function(){
             }
         });
-        circleCanvas_2.addShape(circle_2); 
-        zrenderObj.animates(circleCanvas_2,circle_2) 
+        circleCanvas_2.addShape(circle_2);
+        zrenderObj.animates(circleCanvas_2,circle_2)
 
         //----------也可以有其他的图形----------
         var circleCanvas_3 = zrender.init( document.getElementById("canvas_3") );
@@ -93,10 +93,10 @@ require(
                 b: 0,
                 brushType: 'both',
                 color: '#FC3',
-            },    
+            },
             clickable: true,
             onclick : function() {
-                alert("月亮代表我的❤")
+                alert("月亮代表我的❤");
             },
             addChild : function(){
             }
@@ -136,7 +136,7 @@ require(
                                 xEnd : parseInt(point[2]),
                                 yEnd : parseInt(point[3])
                             }).start();
-        }) 
+        })
 
         //----------绘制多边形----------
         var circleCanvas_5 = zrender.init( document.getElementById("canvas_5") );
@@ -147,7 +147,7 @@ require(
                 pointList: [[100, 100], [100, 100], [100, 100], [100, 100]],
                 color: '#FC3',
                 lineCape:'square'
-            },    
+            },
             clickable: true,
             onclick : function() {
             },
@@ -206,7 +206,7 @@ require(
                 shapList.push(new CircleShape({
                     id : "random"+i,
                     hoverable : false,
-                    style : {   
+                    style : {
                         x : 30*(i+1)+20,
                         y : -20,
                         r : 15,
@@ -248,14 +248,14 @@ require(
                                     y : 290
                                 }).start("BounceOut");
             }
-        }        
+        }
         //----------refresh----------
         $("#canvas_7_refresh").bind("click",function(){
             circleCanvas_7.clear();
             refreshFn();
         })
         refreshFn();
-        
+
         //----------绘制曲线----------
         var circleCanvas_8 = zrender.init( document.getElementById("canvas_8") );
         var circle_8 = new PolylineShape({
@@ -609,4 +609,3 @@ zrenderObj.getTime = function(){
     }
     return allTime;
 }
-
